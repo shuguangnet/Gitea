@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曙光号卡 - 号卡分销平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #001, #004);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 100, 255, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #0ff, #00f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            background: rgba(0, 150, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #000, #002);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 45%, rgba(0, 100, 255, 0.1) 50%, transparent 55%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-50%) translateY(-50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(-50%) translateY(-50%) rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #0ff, #00f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #adf;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, #00f, #0af);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 150, 255, 0.5);
+        }
+
+        .features {
+            padding: 100px 0;
+            background: #001;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: linear-gradient(45deg, #002, #004);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 100, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #0af;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #0df;
+        }
+
+        .feature-card p {
+            color: #8af;
+        }
+
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #001, #003);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0, 20, 40, 0.5);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0df;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 50, 100, 0.2);
+            border: 1px solid #0af;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0ff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        footer {
+            background: #001;
+            padding: 30px 0;
+            text-align: center;
+            color: #68f;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">曙光号卡</div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#features">合作推广</a>
+                <a href="#register">代理注册</a>
+                <a href="#shop">店铺主页</a>
+                <a href="#login">代理登录</a>
+                <a href="#contact">联系我们</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content container">
+            <h1>曙光号卡分销平台</h1>
+            <p>打造智能化通信服务生态，助力合作伙伴成功</p>
+            <a href="#register" class="cta-button">立即加入</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>合作推广</h3>
+                    <p>多样化的推广方案，灵活的佣金政策，助力您的业务增长</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>代理注册</h3>
+                    <p>简单快捷的注册流程，专业的技术支持，开启您的创业之旅</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏪</div>
+                    <h3>店铺主页</h3>
+                    <p>个性化的店铺装修，智能化的管理系统，提升运营效率</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>代理登录</h3>
+                    <p>安全可靠的账户系统，实时的数据统计，助您掌控业务全局</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-form">
+                <h2 style="text-align: center; color: #0df; margin-bottom: 30px;">联系我们</h2>
+                <form>
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>电话</label>
+                        <input type="tel" placeholder="请输入您的联系电话">
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" placeholder="请输入您的邮箱地址">
+                    </div>
+                    <div class="form-group">
+                        <label>留言</label>
+                        <textarea rows="4" placeholder="请输入您的留言内容"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">提交</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 智慧通信 版权所有</p>
+        </div>
+    </footer>
+</body>
+
+</html>
